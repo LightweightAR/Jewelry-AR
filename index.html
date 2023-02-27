@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  </head>
+  <body>
+
+    <a-scene embedded arjs="sourceType: webcam;" renderer="logarithmicDepthBuffer: false;" vr-mode-ui="enabled: false">
+    
+        <a-assets>
+
+            <a-cubemap id="sky1">
+                <img src="maps/hdri/px.png">
+                <img src="maps/hdri/nx.png">
+                <img src="maps/hdri/py.png">
+                <img src="maps/hdri/ny.png">
+                <img src="maps/hdri/pz.png">
+                <img src="maps/hdri/nz.png">
+            </a-cubemap>
+
+            <img id="skyEnv" src="maps/hdri.png">
+
+            <img id="silverRoughnessMap" src="maps/textures/1/silverRoughness.png">
+
+        </a-assets>
+
+        <a-marker-camera type='pattern' url='maps/markers/1.patt'></a-marker-camera>
+
+
+        <a-entity id="silverModel" obj-model="obj: /models/1/silver.obj" position="0 2.5 0" scale="0.01 0.01 0.01" material="envMap: #sky1; metalness: 1; roughness: 0.71; roughnessMap: #silverRoughnessMap"></a-entity>
+
+        <a-entity id="jewelsModel" obj-model="obj: /models/1/jewels.obj" position="0 2.5 0" scale="0.01 0.01 0.01" material="side: double; color: #4d4d4d; emissive: #c7c0d3; envMap: #sky1; metalness: 1; roughness: 0; opacity: 0.72"></a-entity>
+        
+
+       
+    </a-scene>
+  </body>
+</html>
